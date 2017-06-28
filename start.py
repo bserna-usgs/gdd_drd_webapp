@@ -2,7 +2,7 @@
 simple python flask web application to act as a webservice to data created from the
 UW GeoDeepDive infastructure
 '''
-from flask import Flask, render_template
+from flask import Flask, render_template, json
 import requests
 import psycopg2
 
@@ -63,6 +63,21 @@ def dams(variable):
     dam_attrs = store[variable]
     #return str(x)
     return render_template("dam_template.html", dam_attrs=dam_attrs, name=variable)
+
+'''
+dynamic api dam page
+'''
+@app.route('/dam/<variable>/json', methods=['GET'])
+def dams_json(variable):
+    dam_attrs = store[variable]
+    #return str(x)
+    response = app.response_class(
+        response=json.dumps(dam_attrs),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+    #return jsonify(dam_attrs)
 
 @app.route("/dam")
 def dam():
