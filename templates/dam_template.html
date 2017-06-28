@@ -1,0 +1,11 @@
+<html>
+<h1>{{ name }} </h1>
+<br>
+{% for i in dam_attrs %}
+        <hr>
+        <strong>Flag:</strong> {{ i[1] }}<br>
+        <strong>Sentence:</strong> {{ i[2] }}<br>
+        <strong>River:</strong> {{ i[0] }} <br>
+        <strong>URL:</strong> <a href="{{ i[3] }}">{{ i[3] }}</a><br>
+{% endfor %}
+</html>

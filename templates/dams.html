@@ -1,0 +1,9 @@
+<html>
+<h1>List of Dam Candidates</h1>
+<br>
+<ul>
+        {% for i in dams %}
+          <li>{{ i['properties']['dam_name'] }}</li> <br>
+        {% endfor %}
+</ul>
+</html>
